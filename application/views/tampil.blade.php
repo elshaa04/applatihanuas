@@ -1,4 +1,5 @@
 
+
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head><script src="/docs/5.3/assets/js/color-modes.js"></script>
@@ -39,20 +40,24 @@
         <table class="table table-bordered">
           <tr>
             <th>Username</th>
-            <th>Article</th>
-            <th>Created At</th>
-            <th>Updated At</th>
+            <th>Email</th>
+            <th>Artikel</th>
+            <th>Jenis</th>
+            <th>Created_at</th>
+            <th>Update_at</th>
             <th>Aksi</th>
           </tr>
           @foreach($post_list as $post)
           <tr>
             <td>{{ $post->user->username }}</td>
-            <td>{{ $post->artikel }}</td>
+            <td>{{ $post->user->email }}</td>
+            <td>{{ $post->article }}</td>
+            <td>{{ $post->jenis }}</td>
             <td>{{ $post->created_at }}</td>
             <td>{{ $post->updated_at }}</td>
-            <td><a href="{{ site_url('Welcome/hapus/' . $post->id) }}">Hapus</a> | <a href="{{ site_url('Welcome/ubah/' . $post->id) }}">Ubah</a></td>
+            <td><button type="button" class="btn btn-info"><a style="text-color=black" href="{{ site_url('Welcome/hapus/'.$post->id)}}">Hapus</a> </button><button type="button" class="btn btn-danger"> <a href="{{ site_url('Welcome/ubah/'.$post->id) }}">Ubah</a></button></td>
           </tr>
-          @endforeach()
+          @endforeach
         </table>
         <a href="{{ site_url('Welcome/index') }}" class="btn btn-success">Tambah</a>
       </div>

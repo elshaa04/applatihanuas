@@ -31,23 +31,32 @@
 
     <div class="row g-5">
       <div class="col-md-6">
-        <h2 class="text-body-emphasis">Form Update Artikel</h2>
+        <h2 class="text-body-emphasis">Form Input Artikel</h2>
         <p>Masukan data yang akan di proses</p>
-        <form method="post" action="{{ site_url('Welcome/update/' . $post->id) }}">
+        <form method="post" action="{{ site_url('Welcome/update/'. $post->id) }}">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Username</label>
-                <select class="form-control" name="username" >
+                <select class="form-control" name="username">
                   @foreach($avail_user as $user)
-                  <option value="{{ $user->id }}" {{ $post->user_id == $post->id ? "selected" : "" }} >{{ $user->username }}</option>
+                  <option value="{{ $user->id }}" {{ $post->user_id == $user->id ? "selected" : "" }}>{{ $user->username }}</option>
                   @endforeach
                 </select>
             </div>
+            <label for="exampleInputEmail1" class="form-label">Jenis</label>
+            <div>
+            <input type="radio" id="berita" name="jenis" value="Berita"> 
+            <label for="berita">Berita</label>
+             <input type="radio" id="tutorial" name="jenis" value="Tutorial">
+             <label for="tutorial">Tutorial</label>
+              <input type="radio" id="blog" name="jenis" value="Blog">
+            <label for="blog">Blog</label>
+            </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Artikel</label>
-                <textarea class="form-control" id="nama" name="artikel" rows="3">{{ $post->artikel }}</textarea>
+                <textarea class="form-control" id="nama" name="artikel" rows="3">{{ $post->article }}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a class="btn btn-secondary" href="{{ site_url('Welcome/tampil') }}">Tampil</a>
+            <a class="btn btn-secondary" href="{{site_url('Welcome/tampil')}}">Tampil</a>
         </form>
       </div>
     </div>
